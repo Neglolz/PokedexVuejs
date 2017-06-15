@@ -1,11 +1,11 @@
 <template>
     <div id="app">
-        <router-view></router-view>
+        <!--<router-view></router-view>-->
         <div id="demo">
             <form id="search">
                 Search <input name="query" v-model="searchQuery">
             </form>
-            {{msg}}
+            {{ msg }}
             <tableau
                     :data="gridData"
                     :columns="gridColumns"
@@ -26,10 +26,9 @@
         name: 'app',
         data () {
             return {
+                msg:"vide",
                 pokemons: [],
-                pokemonsName:[
-                    {name: 'Chuck Norris', power: Infinity}
-                ],
+                pokemonsName:[],
                 searchQuery: '',
                 gridColumns: ['name', 'power'],
                 gridData: [
@@ -57,7 +56,7 @@
         },
         mounted (){
             //inutilisé pour l'instant
-            this.$pokemonName = this.$resource('http://pokeapi.co/api/v2/pokemon')
+            this.pokemonName = this.$resource('http://pokeapi.co/api/v2/pokemon')
 
             this.$http.get('http://pokeapi.co/api/v2/pokemon').then(response => {
                 // get body data
