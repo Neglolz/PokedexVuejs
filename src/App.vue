@@ -1,23 +1,27 @@
 <template>
-  <div id="app">
-      <div id="demo">
-          <form id="search">
-              Search <input name="query" v-model="searchQuery">
-          </form>
-          <demo-grid
-                  :data="pokemons.results"
-                  :columns="gridColumns"
-                  :filter-key="searchQuery">
-          </demo-grid>
-      </div>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+        <div id="demo">
+            <form id="search">
+                Search <input name="query" v-model="searchQuery">
+            </form>
+            {{msg}}
+            <tableau
+                    :data="gridData"
+                    :columns="gridColumns"
+                    :filter-key="searchQuery">
+            </tableau>
+        </div>
+    </div>
 </template>
 
 <script>
-    import DemoGrid from './components/pokemon/DemoGrid.vue'
+    import Tableau from './components/Tableau.vue'
+    import $ from 'jquery'
+
     export default {
         components:{
-            DemoGrid
+            Tableau
         },
         name: 'app',
         data () {
